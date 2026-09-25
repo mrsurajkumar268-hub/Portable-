@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suraj Search Engine</title>
+
+<meta name="description" content="Suraj Search Engine - Fast and Simple Search">
+<meta name="keywords" content="search, suraj search, web search">
+<meta name="author" content="Suraj Kumar">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(-45deg,#667eea,#764ba2,#6a11cb,#2575fc);
+    background-size:400% 400%;
+    animation:gradientBG 10s ease infinite;
+    transition:0.4s;
+    color: white;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    text-align:center;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    padding:50px;
+    border-radius:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.3);
+    width:90%;
+    max-width:600px;
+    color: white;
+    transition: 0.4s;
+}
+
+.logo{
+    font-size:45px;
+    font-weight:700;
+    margin-bottom:25px;
+    letter-spacing:3px;
+    animation:fadeIn 2s ease-in-out;
+    color: white; /* Ensures logo is white */
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(-20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.search-bar{
+    width:100%;
+    padding:15px 20px;
+    border:none;
+    border-radius:50px;
+    font-size:16px;
+    outline:none;
+    transition:0.3s;
+    background: white; /* Default input bg */
+    color: #333;
+}
+
+.search-bar:focus{
+    transform:scale(1.05);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.buttons{
+    margin-top:25px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color: #333;
+    margin:5px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+button:hover{
+    background:black;
+    color:white;
+    transform:scale(1.1);
+}
+
+.footer{
+    margin-top:30px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+.toggle-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight: bold;
+}
+
+/* --- Dark Mode Styles (Fixed for readability) --- */
+body.dark-mode{
+    background: #121212;
+    background-size: 400% 400%;
+    animation: none; /* Stop animation for solid dark mode */
+}
+
+body.dark-mode .container{
+    background: rgba(30, 30, 30, 0.8); /* Darker glass effect */
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    color: white;
+}
+
+body.dark-mode .logo{
+    color: white;
+}
+
+body.dark-mode .search-bar{
+    background: #333;
+    color: white;
+}
+
+body.dark-mode .search-bar::placeholder{
+    color: #aaa;
+}
+
+body.dark-mode .toggle-btn{
+    background: #333;
+    color: white;
+}
+
+body.dark-mode button{
+    background: #444;
+    color: white;
+}
+
+body.dark-mode button:hover{
+    background: white;
+    color: black;
+}
+</style>
+</head>
+<body>
+
+<button class="toggle-btn" id="modeBtn" onclick="toggleMode()">Dark Mode</button>
+
+<div class="container">
+    <div class="logo">SURAJ SEARCH</div>
+
+    <input type="text" id="search" class="search-bar" placeholder="Search anything...">
+
+    <div class="buttons">
+        <button onclick="search()">Search</button>
+        <button onclick="lucky()">I'm Feeling Lucky</button>
+    </div>
+
+    <div class="footer">
+        © 2026 Suraj Search Engine | Designed by Suraj Kumar
+    </div>
+</div>
+
+<script>
+function search(){
+    const query=document.getElementById("search").value;
+    if(query){
+        window.location.href=`https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    }
+}
+
+function lucky(){
+    const query=document.getElementById("search").value;
+    if(query){
+        // Redirects to Google's "I'm Feeling Lucky" URL
+        window.location.href=`https://www.google.com/search?q=${encodeURIComponent(query)}&btnI`;
+    }
+}
+
+// Allows pressing "Enter" to search
+document.getElementById("search").addEventListener("keypress",function(e){
+    if(e.key==="Enter"){
+        search();
+    }
+});
+
+function toggleMode(){
+    document.body.classList.toggle("dark-mode");
+    
+    // Change button text based on mode
+    const btn = document.getElementById("modeBtn");
+    if(document.body.classList.contains("dark-mode")){
+        btn.innerText = "Light Mode";
+    } else {
+        btn.innerText = "Dark Mode";
+    }
+}
+</script>
+
+</body>
+</html>
