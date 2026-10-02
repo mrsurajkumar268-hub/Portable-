@@ -1,0 +1,60 @@
+import time
+import os
+import itertools
+
+# ANSI colors
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+BLUE = "\033[94m"
+MAGENTA = "\033[95m"
+CYAN = "\033[96m"
+RESET = "\033[0m"
+
+name = "SURAj KUMAR"
+
+# Spinner
+spinner = itertools.cycle(["◐", "◓", "◑", "◒"])
+
+# Box
+box = [
+    "╔════════════════════════════════╗",
+    "║                                ║",
+    "║        SURAj KUMAR             ║",
+    "║                                ║",
+    "╚════════════════════════════════╝"
+]
+
+colors = itertools.cycle([RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN])
+
+# Animation
+for i in range(40):
+    os.system("cls" if os.name == "nt" else "clear")
+
+    color = next(colors)
+    spin = next(spinner)
+
+    print()
+    print(f"        {color}{spin}  LOADING...{RESET}")
+    print()
+
+    for line in box:
+        print(f"        {color}{line}{RESET}")
+
+    print()
+    print(f"        {color}{spin}  {name}  {spin}{RESET}")
+
+    time.sleep(0.15)
+
+# Final screen
+os.system("cls" if os.name == "nt" else "clear")
+
+print()
+print(f"{CYAN}        ╔════════════════════════════════╗{RESET}")
+print(f"{CYAN}        ║                                ║{RESET}")
+print(f"{YELLOW}        ║        SURAj KUMAR             ║{RESET}")
+print(f"{CYAN}        ║                                ║{RESET}")
+print(f"{CYAN}        ╚════════════════════════════════╝{RESET}")
+print()
+print(f"{GREEN}              ★ WELCOME ★{RESET}")
+print()
